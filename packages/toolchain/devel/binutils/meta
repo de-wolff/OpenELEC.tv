@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2011 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -14,22 +14,22 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with OpenELEC.tv; see the file COPYING.  If not, write to
-#  the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+#  the Free Software Foundation, 51 Franklin Street, Suite 500, Boston, MA 02110, USA.
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
 PKG_NAME="binutils"
-PKG_VERSION="2.21.52.0.2"
+PKG_VERSION="2.22"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.gnu.org/software/binutils/binutils.html"
-PKG_URL="http://www.mirrorservice.org/sites/ftp.kernel.org/pub/linux/devel/binutils/$PKG_NAME-$PKG_VERSION.tar.bz2"
+#PKG_URL="http://www.mirrorservice.org/sites/ftp.kernel.org/pub/linux/devel/binutils/$PKG_NAME-$PKG_VERSION.tar.bz2"
 #PKG_URL="ftp://ftp.pgpi.com/linux/kernel/pub/linux/devel/binutils/$PKG_NAME-$PKG_VERSION.tar.bz2"
-#PKG_URL="http://ftp.gnu.org/gnu/binutils/$PKG_NAME-$PKG_VERSION.tar.bz2"
+PKG_URL="http://ftp.gnu.org/gnu/binutils/$PKG_NAME-$PKG_VERSION.tar.bz2"
 #PKG_URL="ftp://ftp.kernel.org/pub/linux/devel/binutils/$PKG_NAME-$PKG_VERSION.tar.bz2"
 PKG_DEPENDS=""
-PKG_BUILD_DEPENDS="ccache bison flex linux-headers gmp mpfr ppl cloog-ppl libelf"
+PKG_BUILD_DEPENDS="ccache bison flex linux-headers gmp-host mpfr ppl cloog-ppl libelf"
 PKG_PRIORITY="optional"
 PKG_SECTION="toolchain/devel"
 PKG_SHORTDESC="binutils: A GNU collection of binary utilities"

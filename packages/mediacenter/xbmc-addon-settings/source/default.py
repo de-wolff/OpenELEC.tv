@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2011 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2012 Stephan Raue (stephan@openelec.tv)
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with OpenELEC.tv; see the file COPYING.  If not, write to
-#  the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+#  the Free Software Foundation, 51 Franklin Street, Suite 500, Boston, MA 02110, USA.
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
@@ -27,7 +27,7 @@ __author__ = "OpenELEC"
 __url__ = "http://www.openelec.tv"
 __svn_url__ = ""
 __credits__ = ""
-__version__ = "0.0.9"
+__version__ = "0.0.13"
 __XBMC_Revision__ = "22240"
 
 __settings__   = xbmcaddon.Addon(id='os.openelec.settings')

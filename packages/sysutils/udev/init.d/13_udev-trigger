@@ -14,7 +14,7 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with OpenELEC.tv; see the file COPYING.  If not, write to
-#  the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+#  the Free Software Foundation, 51 Franklin Street, Suite 500, Boston, MA 02110, USA.
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
@@ -24,10 +24,10 @@
 # runlevels: openelec, installer, textmode
 
   progress "request udev events from the kernel (type: subsystems)"
-    /sbin/udevadm trigger --type=subsystems --action=add
+    udevadm trigger --type=subsystems --action=add
 
   progress "request udev events from the kernel (type: devices)"
-    /sbin/udevadm trigger --type=devices --action=add
+    udevadm trigger --type=devices --action=add
 
   progress "watching udev event queue from the kernel"
-    /sbin/udevadm settle &
+    udevadm settle &

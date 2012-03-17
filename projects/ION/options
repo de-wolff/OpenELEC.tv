@@ -1,12 +1,16 @@
 # Name of the Distro to build (full name, without special charcters)
-  DISTRONAME="OpenELEC_PVR"
+  if [ "$PVR" = yes ]; then
+    DISTRONAME="OpenELEC_PVR"
+  else
+    DISTRONAME="OpenELEC"
+  fi
 
 # Welcome Message for e.g. SSH Server (up to 5 Lines)
-  GREATING0="##############################################"
-  GREATING1="# OpenELEC - The living room PC for everyone #"
-  GREATING2="# ...... visit http://www.openelec.tv ...... #"
-  GREATING3="##############################################"
-  GREATING4=""
+  GREETING0="##############################################"
+  GREETING1="# OpenELEC - The living room PC for everyone #"
+  GREETING2="# ...... visit http://www.openelec.tv ...... #"
+  GREETING3="##############################################"
+  GREETING4=""
 
 # Hostname for target system (openelec)
   HOSTNAME="openelec"
@@ -77,11 +81,11 @@
 # Project CFLAGS
   PROJECT_CFLAGS="-mfpmath=sse -msse2 -mssse3 -mmovbe"
 
-# LTO (Link Time Optimazion) support
-  LTO_SUPPORT="yes"
+# LTO (Link Time Optimization) support
+  LTO_SUPPORT="no"
 
 # GOLD (Google Linker) support
-  GOLD_SUPPORT="yes"
+  GOLD_SUPPORT="no"
 
 # Graphite Support
   GRAPHITE_SUPPORT="yes"
@@ -103,8 +107,15 @@
 # use linux-next (latest rc) instead latest released version
   LINUX_NEXT="no"
 
+# SquashFS compression method (gzip / lzo / xz)
+  SQUASHFS_COMPRESSION="gzip"
+
 # Mediacenter to use (xbmc / no)
-  MEDIACENTER="xbmc"
+  if [ "$PVR" = yes ]; then
+    MEDIACENTER="xbmc-pvr"
+  else
+    MEDIACENTER="xbmc"
+  fi
 
 # Skins to install (Confluence)
 # Space separated list is supported,
@@ -150,10 +161,16 @@
 # asix-ax887xx:     Asix AX887xx USB LAN Driver
 # Space separated list is supported,
 # e.g. ADDITIONAL_DRIVERS="asix-ax887xx AF9035"
-  ADDITIONAL_DRIVERS="asix-ax887xx AF9035 linux-tbs"
+  ADDITIONAL_DRIVERS="asix-ax887xx"
+  if [ "$PVR" = yes ]; then
+    ADDITIONAL_DRIVERS="$ADDITIONAL_DRIVERS AF9035 A867 aver_h826d RTL2832 hdhomerun-driver vtuner-driver linux-tbs"
+  fi
 
 # build with network support (yes / no)
   NETWORK="yes"
+
+# build and install bluetooth support (yes / no)
+  BLUETOOTH_SUPPORT="yes"
 
 # build and install with XBMC webfrontend (yes / no)
   WEBSERVER="yes"
@@ -199,13 +216,16 @@
 # build and install hfs filesystem utilities (yes / no)
   HFSTOOLS="yes"
 
-# Displayserver to use (xorg-server / no)
-  DISPLAYSERVER="xorg-server"
+# OpenGL(X) implementation to use (no / Mesa)
+  OPENGL="Mesa"
+
+# OpenGL-ES implementation to use (no)
+  OPENGLES="no"
 
 # Windowmanager to use (ratpoison / none)
   WINDOWMANAGER="ratpoison"
 
-# Graphic drivers to use (all / i915,i965,r200,r300,r600,fglrx,nvidia,nouveau,vmware)
+# Xorg Graphic drivers to use (all / i915,i965,r200,r300,r600,fglrx,nvidia,nouveau,vmware)
 # Space separated list is supported,
 # e.g. GRAPHIC_DRIVERS="i915 i965 r300 r600 radeon nvidia nouveau"
   GRAPHIC_DRIVERS="nvidia"
@@ -216,6 +236,9 @@
 # Use VAAPI video acceleration (needs intel i965 driver and a supported card)
   VAAPI="no"
 
+# Use XVBA video acceleration (needs AMD fglrx driver and a supported card)
+  XVBA="no"
+
 # Use Broadcom CrystalHD Decoder Card for video acceleration 
 # (needs Kernelsupport for Broadcom Decoder Card and a supported card)
   CRYSTALHD="no"
@@ -223,14 +246,14 @@
 # build and install remote support (yes / no)
   REMOTE_SUPPORT="yes"
 
-# build and install WiiMote support (yes / no)
-  WIIMOTE_SUPPORT="yes"
-
-# build and install PS3 Remote support (yes / no)
-  PS3REMOTE_SUPPORT="yes"
-
 # build and install ATV IR remote support (yes / no)
   ATVCLIENT_SUPPORT="no"
+
+# build and install IRServer IR/LCD support (yes / no)
+  IRSERVER_SUPPORT="yes"
+
+# build and install Joystick support (yes / no)
+  JOYSTICK_SUPPORT="yes"
 
 # build and install CEC adapter support (yes / no)
   CEC_SUPPORT="yes"
@@ -246,12 +269,15 @@
 # 'all' compiles all drivers;
 # 'all,!xxx,!yyy' de-selects previously selected drivers
 # "none" for disable LCD support
-  LCD_DRIVER="irtrans,imon,imonlcd,mdm166a"
+  LCD_DRIVER="irtrans,imon,imonlcd,mdm166a,MtxOrb"
 
 # additional Firmware to use (dvb-firmware, misc-firmware, wlan-firmware)
 # Space separated list is supported,
 # e.g. FIRMWARE="dvb-firmware misc-firmware wlan-firmware"
-  FIRMWARE="dvb-firmware misc-firmware wlan-firmware"
+  FIRMWARE="misc-firmware wlan-firmware"
+  if [ "$PVR" = yes ]; then
+    FIRMWARE="$FIRMWARE dvb-firmware"
+  fi
 
 # build with lm_sensors hardware monitoring support (yes / no)
   SENSOR_SUPPORT="yes"

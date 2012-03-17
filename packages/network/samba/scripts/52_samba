@@ -14,7 +14,7 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with OpenELEC.tv; see the file COPYING.  If not, write to
-#  the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+#  the Free Software Foundation, 51 Franklin Street, Suite 500, Boston, MA 02110, USA.
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
@@ -43,8 +43,8 @@
       fi
 
       mkdir -p /var/log/samba
-      smbd --daemon $SMB_ARG > /dev/null 2>&1
       nmbd --daemon $SMB_ARG > /dev/null 2>&1
+      smbd --daemon $SMB_ARG > /dev/null 2>&1
     fi
   fi
 )&
